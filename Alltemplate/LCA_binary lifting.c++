@@ -6,7 +6,7 @@ struct LCA{
     vector< vector<ll> > pr;
     vector<ll> dapth;
     ll root,sz,lz;
-    LCA(vector<vector<ll> > tm,ll rt)
+    LCA(vector<vector<ll> >&tm,ll rt)
     {
         sz=tm.size(),root=rt,lz=log2(tm.size())+5;
         pr.resize(sz+5,vector<ll>(lz+5));
@@ -33,7 +33,8 @@ struct LCA{
          }
     }
     ll parent(ll u,ll k)
-    {for(ll i=lz;i>=0;i--)
+    {   if(k>sz)return root;
+        for(ll i=lz;i>=0;i--)
         {if((k&(1<<i)))
             {u=pr[u][i];}
         }return u;
@@ -44,16 +45,16 @@ struct LCA{
         {u=parent(u,d1-d2);}
         if(d2>d1)
         {v=parent(v,d2-d1);}
-        if(u==v)return u;ll i=0,j=sz+1,tm;
-        while(i<=j)
+        if(u==v)return u;
+        for(ll i=lz;i>=0;i--)
         {
-            ll mid=(i+j)/2;
-            ll x=parent(u,mid);
-            ll y=parent(v,mid);
-            if(x!=y)i=mid+1;
-            else
-            {tm=x;j=mid-1;}
+            ll x=pr[u][i];
+            ll y=pr[v][i];
+            if(x!=y)
+            {
+                u=x,v=y;
+            }
         }
-        return tm;
+        return pr[u][0];
     }
 };
