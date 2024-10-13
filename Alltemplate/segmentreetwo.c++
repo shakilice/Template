@@ -1,5 +1,7 @@
  /*This code only return sum and
- work both set and range update*/
+ work both set and range update.
+ Zero based index arry creat tree
+ */
 struct SegTree {
     struct Node {
         Node* left;
