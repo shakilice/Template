@@ -11,9 +11,9 @@ struct union_find{
         if(par[u]==u)return u;
         else return par[u]=find_parent(par[u]);
     }
-    void marge(ll x,ll y)
+    void marge(ll u,ll v)
     {
-        ll u=find_parent(x),v=find_parent(y);
+        ll x=find_parent(u),y=find_parent(v);
         if(x!=y)
         {
             if(cnt[x]<=cnt[y]){par[x]=y,cnt[y]+=cnt[x];}
