@@ -1,5 +1,6 @@
 //use for only sum and point updat rage quary
 //range update point quary and only increase or decrease a valu
+//always use one based indexing
 struct BIT {
     vector<ll> bitree; 
     ll bit_length;             
