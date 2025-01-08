@@ -1,3 +1,4 @@
+//use zero based index
 vector<int> buildSuffixArray(const string& S) {
     int n = S.size();
     const int alphabet = 256;
